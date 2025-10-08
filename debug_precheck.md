@@ -18,12 +18,6 @@ check the `$INPUT_DIRECTORY/checks/spdx_compliance_report.log` for the non-compl
 
 #### Compliance Check failed
 
-- Remove all non-inclusive keywords in all of your files those are
-
-  - blacklist
-  - whitelist
-  - slave
-
 - Include `verify` and `clean` targets in your makefile
 
 #### Fuzzy consistency check failed

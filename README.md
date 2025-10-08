@@ -65,7 +65,7 @@ The steps are as follows:
   - The user_project_wrapper.gds must be different from the default one found in [caravel_user_project](https://github.com/efabless/caravel_user_project.git) for digital projects
     and [caravel_user_project_analog](https://github.com/efabless/caravel_user_project_analog.git) for analog projects
 - **Documentation**:
-  - Documentation file README.md exists and does not use any non-inclusive language
+  - Documentation file README.md exists
 - **Consistency**:
   - Runs a series of checks on the user netlist (user_project_wrapper/user_analog_project_wrapper), and the top netlist (caravel/caravan) to make sure that both conform to the constraints put by the golden wrapper.
     - Both Netlists share the following checks:
