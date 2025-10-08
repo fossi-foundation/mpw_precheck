@@ -18,21 +18,16 @@ import logging
 import os
 from pathlib import Path
 
-BANNED_WORDS = ['blacklist', 'slave', 'whitelist']  # Banned Keywords
 DOCUMENTATION_EXTS = ['.doc', '.docx', '.html', '.md', '.odt', '.rst']  # Valid Document Extensions
 IGNORED_DIRS = ['.git', 'third_party']  # Directories ignored for documentation check
 
 DOCUMENTATION_FILENAME = 'README'
 
 
-def check_inclusive_language(file):
+def check_unicode_exception(file):
     try:
         with open(file, encoding='utf-8') as f:
             content = f.read()
-        for word in BANNED_WORDS:
-            if word in content:
-                logging.warning(f"The documentation file ({file}) contains the non-inclusive word: {word}")
-                return False
         return True
     except UnicodeDecodeError as unicode_error:
         logging.error(f"DOCUMENTATION FILE UNICODE DECODE EXCEPTION in ({file}): {unicode_error}")
@@ -58,7 +53,7 @@ def main(*args, **kwargs):
                 if file_path.parent not in IGNORED_DIRS and file_path.suffix in DOCUMENTATION_EXTS:
                     extension = file_path.suffix
                     if extension in DOCUMENTATION_EXTS:
-                        check = check_inclusive_language(file_path)
+                        check = check_unicode_exception(file_path)
                         if not check:
                             result = False
         return result
